@@ -146,7 +146,49 @@ class Register extends StatelessWidget {
                           obscureText: true,
                           // suffixIcon: const Icon(Icons.visibility_off, color: Colors.grey),
                         ),
-                        const SizedBox(height: 60),
+                        const SizedBox(height: 12),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 16),
+                          width: double.maxFinite,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: Colors.deepOrangeAccent.withOpacity(0.5),
+                              width: 2,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: secoundColor.withOpacity(0.1),
+                                spreadRadius: 4,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Expanded(child: Text('التأكيد على حفض كلمة السر جيدا لانك بنسيانها لا نتحمل مسئوليت ذلك',
+                                    textAlign: TextAlign.end,
+                                    style: TextStyle(fontSize: 14,color: Colors.black54),)),
+                                  SizedBox(width: 6,),
+                                  Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(8),
+                                          color: Colors.deepOrangeAccent.withOpacity(0.2)
+                                      ),
+                                      padding: EdgeInsets.all(10),
+                                      child: Icon(Icons.info_outline,color: Colors.deepOrangeAccent,size: 32,))
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 22),
                         ConditionalBuilder(
                             condition: state is !SignUpLoadingState,
                             builder: (context){

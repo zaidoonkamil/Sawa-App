@@ -43,7 +43,6 @@ class Home extends StatelessWidget {
                           Container(
                             margin: const EdgeInsets.symmetric(horizontal: 20),
                             width: double.infinity,
-                            height: 155,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(20),
@@ -136,8 +135,8 @@ class Home extends StatelessWidget {
                                           SizedBox(height: 10,),
                                           Row(
                                             children: [
-                                              Text('د.ع ',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22),),
-                                              Text(cubit.profileModel!.dolar.toString(),style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22),),
+                                              Text('د.ع ',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
+                                              Text(cubit.profileModel!.dolar.toString(),style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
                                             ],
                                           ),
                                           SizedBox(height: 10,),
@@ -148,7 +147,7 @@ class Home extends StatelessWidget {
                                         children: [
                                           Image.asset('assets/images/logo.png',width: 60,height: 60,),
                                           SizedBox(height: 10,),
-                                          Text(cubit.profileModel!.sawa.toString(),style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22),),
+                                          Text(cubit.profileModel!.sawa.toString(),style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
                                           SizedBox(height: 10,),
                                           Text('النقاط',style: TextStyle(color: primaryColor,fontWeight: FontWeight.bold),),
                                         ],
@@ -157,7 +156,7 @@ class Home extends StatelessWidget {
                                         children: [
                                           Image.asset('assets/images/material-symbols_diamond-outline (1).png',scale: 0.8,),
                                           SizedBox(height: 10,),
-                                          Text(cubit.profileModel!.jewel.toString(),style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22),),
+                                          Text(cubit.profileModel!.jewel.toString(),style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
                                           SizedBox(height: 10,),
                                           Text('الجواهر',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
                                         ],
@@ -446,7 +445,7 @@ class Home extends StatelessWidget {
                                                   ),
                                                   child: Icon(Icons.currency_exchange_outlined,color: Colors.orange,size: 34,)),
                                               SizedBox(height: 10,),
-                                              Text('سحب الاموال',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
+                                              Text('التحويلات',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
                                             ],
                                           ),
                                         ),
