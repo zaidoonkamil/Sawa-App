@@ -21,8 +21,8 @@ class LuckWheelPage extends StatelessWidget {
   final int myValue;
   final List<Map<String, dynamic>> items = [
     {'key': 'try_again', 'image': 'assets/items/rocket.png'},
-    {'key': '1', 'image': 'assets/items/gift.png'},
-    {'key': '2', 'image': 'assets/items/dollar.png'},
+    {'key': 'try_again', 'image': 'assets/items/gift.png'},
+    {'key': '1', 'image': 'assets/items/dollar.png'},
     {'key': 'try_again', 'image': 'assets/items/refresh.png'},
     {'key': '2', 'image': 'assets/items/medal.png'},
     {'key': '1', 'image': 'assets/items/gift-card.png'},

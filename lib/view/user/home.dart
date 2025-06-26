@@ -135,7 +135,7 @@ class Home extends StatelessWidget {
                                           SizedBox(height: 10,),
                                           Row(
                                             children: [
-                                              Text('د.ع ',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
+                                              //Text('د.ع ',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
                                               Text(cubit.profileModel!.dolar.toString(),style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
                                             ],
                                           ),
