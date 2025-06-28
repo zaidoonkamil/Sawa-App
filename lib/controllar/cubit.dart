@@ -354,7 +354,6 @@ class AppCubit extends Cubit<AppStates> {
         text: 'تم كسب $amount سوا ',
         context: context,
       );
-      myValue-=10;
       updateGems(gems: myValue, context: context);
       emit(SendSawaSuccessState());
     }).catchError((error)
@@ -400,14 +399,16 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   updateGems({required int gems, required BuildContext context,}){
-    emit(UpdateSawaLoadingState());
+    emit(UpdateGemsLoadingState());
     DioHelper.putData(
       url: '/users/$id/gems',
       data: {
         'gems': gems,
       },
     ).then((value) {
-      emit(UpdateSawaSuccessState());
+      print('===============================');
+      print(gems);
+      emit(UpdateGemsSuccessState());
     }).catchError((error)
     {
       if (error is DioError) {
@@ -415,7 +416,7 @@ class AppCubit extends Cubit<AppStates> {
           text: error.response?.data["error"] ,
           context: context,
         );
-        emit(UpdateSawaErrorState());
+        emit(UpdateGemsErrorState());
       }else {
         print("Unknown Error: $error");
       }

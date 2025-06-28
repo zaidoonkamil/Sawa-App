@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:dananer/core/%20navigation/navigation.dart';
 import 'package:dananer/core/navigation_bar/navigation_bar.dart';
-import 'package:dananer/core/widgets/appBar.dart';
 import 'package:dananer/core/widgets/show_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,9 +13,9 @@ import '../../controllar/cubit.dart';
 import '../../controllar/states.dart';
 import '../../core/styles/themes.dart';
 
+
 class LuckWheelPage extends StatelessWidget {
   LuckWheelPage({super.key, required this.myValue});
-
 
   final int myValue;
   final List<Map<String, dynamic>> items = [
@@ -43,7 +42,6 @@ class LuckWheelPage extends StatelessWidget {
     selected.add(selectedIndex);
     print('Selected: ${items[selectedIndex]['key']}');
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -99,12 +97,13 @@ class LuckWheelPage extends StatelessWidget {
                       },
                       onAnimationEnd: () {
                         if(items[lastSelectedIndex!]['key'] != 'try_again') {
+                          cubit.myValue -=10;
                           cubit.sendSawa(amount: items[lastSelectedIndex!]['key'], context: context);
                           animate = false;
                           cubit.refreshState();
                         } else {
-                          cubit.myValue-=10;
-                          cubit.refreshState();
+                          cubit.myValue -=10;
+                          cubit.updateGems(gems: cubit.myValue, context: context);
                           showToastInfo(text: 'حاول مرة اخرى', context: context);
                           animate = false;
                           cubit.refreshState();

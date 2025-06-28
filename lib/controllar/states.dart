@@ -44,6 +44,10 @@ class UpdateSawaLoadingState extends AppStates {}
 class UpdateSawaSuccessState extends AppStates {}
 class UpdateSawaErrorState extends AppStates {}
 
+class UpdateGemsLoadingState extends AppStates {}
+class UpdateGemsSuccessState extends AppStates {}
+class UpdateGemsErrorState extends AppStates {}
+
 class GetCounterLoadingState extends AppStates {}
 class GetCounterSuccessState extends AppStates {}
 class GetCounterErrorState extends AppStates {}

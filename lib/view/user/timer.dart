@@ -67,7 +67,7 @@ class TimerScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 30,),
                     ConditionalBuilder(
-                        condition: cubit.remainingTime != null ,
+                        condition: cubit.remainingTime != null && cubit.profileModel != null,
                         builder: (c){
                       return Column(
                         children: [
@@ -179,7 +179,26 @@ class TimerScreen extends StatelessWidget {
                                       style: TextStyle(fontSize: 18,color: Colors.blue),),
                                   ],
                                 ),
-                              ):Container(),
+                              ):Container(
+                                padding: EdgeInsets.symmetric(horizontal: 10,vertical: 6),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: Colors.blue.withOpacity(0.2),
+                                    border: Border.all(
+                                        color: Colors.blue
+                                    )
+                                ),
+                                child: Row(
+                                  children: [
+                                    Text('جوهرة',
+                                      textAlign: TextAlign.end,
+                                      style: TextStyle(fontSize: 18,color: Colors.blue),),
+                                    Text('30',
+                                      textAlign: TextAlign.end,
+                                      style: TextStyle(fontSize: 18,color: Colors.blue),),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                           SizedBox(height: 24,),
