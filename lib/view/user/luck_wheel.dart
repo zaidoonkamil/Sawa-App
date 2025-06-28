@@ -23,13 +23,12 @@ class LuckWheelPage extends StatelessWidget {
     {'key': 'try_again', 'image': 'assets/items/gift.png'},
     {'key': '1', 'image': 'assets/items/dollar.png'},
     {'key': 'try_again', 'image': 'assets/items/refresh.png'},
-    {'key': '2', 'image': 'assets/items/medal.png'},
+    {'key': '1', 'image': 'assets/items/medal.png'},
     {'key': '1', 'image': 'assets/items/gift-card.png'},
     {'key': 'try_again', 'image': 'assets/items/rocket.png'},
     {'key': 'try_again', 'image': 'assets/items/refresh.png'},
   ];
-
-
+  static int spinCount = 0;
 
   final StreamController<int> selected = StreamController<int>();
   late bool animate=false;
@@ -37,11 +36,35 @@ class LuckWheelPage extends StatelessWidget {
 
   void spinWheel() {
     final random = Random();
-    int selectedIndex = random.nextInt(items.length);
+    int selectedIndex;
+
+    if (spinCount < 2) {
+      final tryAgainIndexes = items
+          .asMap()
+          .entries
+          .where((entry) => entry.value['key'] == 'try_again')
+          .map((entry) => entry.key)
+          .toList();
+
+      selectedIndex = tryAgainIndexes[random.nextInt(tryAgainIndexes.length)];
+      spinCount++;
+    } else {
+      final rewardIndexes = items
+          .asMap()
+          .entries
+          .where((entry) => entry.value['key'] == '1')
+          .map((entry) => entry.key)
+          .toList();
+
+      selectedIndex = rewardIndexes[random.nextInt(rewardIndexes.length)];
+      spinCount = 0;
+    }
+
     lastSelectedIndex = selectedIndex;
     selected.add(selectedIndex);
     print('Selected: ${items[selectedIndex]['key']}');
   }
+
 
   @override
   Widget build(BuildContext context) {
