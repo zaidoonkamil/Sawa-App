@@ -59,7 +59,7 @@ class WithdrawMoney extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Expanded(child: Text('علما ان عمولة السحب %5 من قيمة المبلغ الاجمال',
+                              Expanded(child: Text('علما ان عمولة السحب 100 سوا من قيمة المبلغ الاجمال',
                                 textAlign: TextAlign.end,
                                 style: TextStyle(fontSize: 16,color: Colors.black54),)),
                               SizedBox(width: 6,),
