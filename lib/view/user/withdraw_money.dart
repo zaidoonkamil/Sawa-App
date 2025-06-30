@@ -74,145 +74,187 @@ class WithdrawMoney extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 20,),
-                    GestureDetector(
-                      onTap: () async {
-                        final url =
-                            'https://t.me/$telegram';
-                        await launch(
-                          url,
-                          enableJavaScript: true,
-                        ).catchError((e) {
-                          showToastError(context: context,text:  e.toString());
-                        });
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 16),
-                        margin: const EdgeInsets.symmetric(horizontal: 20,),
-                        width: double.maxFinite,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                            color: Colors.grey.withOpacity(0.5),
-                            width: 2,
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 16),
+                      margin: const EdgeInsets.symmetric(horizontal: 20,),
+                      width: double.maxFinite,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: Colors.deepOrangeAccent.withOpacity(0.5),
+                          width: 2,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: secoundColor.withOpacity(0.1),
+                            spreadRadius: 4,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
                           ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: secoundColor.withOpacity(0.1),
-                              spreadRadius: 4,
-                              blurRadius: 5,
-                              offset: const Offset(0, 6),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Expanded(
-                                    child: Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Text(' زين كاش ',
-                                          textAlign: TextAlign.end,
-                                          style: TextStyle(fontSize: 16,color: Colors.black),),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Expanded(
-                                          child: Text('اسحب اموالك عن طريق زين كاش',
-                                            textAlign: TextAlign.end,
-                                            style: TextStyle(fontSize: 14,color: Colors.black),),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                )
-                                ),
-                                SizedBox(width: 12,),
-                                Image.asset('assets/images/unnamed 1.png',width: 80,height: 80,)
-                              ],
-                            ),
-                          ],
-                        ),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Expanded(child: Text('يمكنك التواصل مع الدعم لسحب الاموال',
+                                textAlign: TextAlign.end,
+                                style: TextStyle(fontSize: 16,color: Colors.black54),)),
+                              SizedBox(width: 6,),
+                              Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.deepOrangeAccent.withOpacity(0.2)
+                                  ),
+                                  padding: EdgeInsets.all(10),
+                                  child: Icon(Icons.info_outline,color: Colors.deepOrangeAccent,size: 32,))
+                            ],
+                          ),
+                        ],
                       ),
                     ),
-                    SizedBox(height: 10,),
-                    GestureDetector(
-                      onTap: () async {
-                        final url =
-                            'https://t.me/$telegram';
-                        await launch(
-                          url,
-                          enableJavaScript: true,
-                        ).catchError((e) {
-                          showToastError(context: context,text:  e.toString());
-                        });
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 16),
-                        margin: const EdgeInsets.symmetric(horizontal: 20,),
-                        width: double.maxFinite,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                            color: Colors.grey.withOpacity(0.5),
-                            width: 2,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: secoundColor.withOpacity(0.1),
-                              spreadRadius: 4,
-                              blurRadius: 5,
-                              offset: const Offset(0, 6),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Expanded(
-                                    child: Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Text(' ماستر كارد ',
-                                          textAlign: TextAlign.end,
-                                          style: TextStyle(fontSize: 16,color: Colors.black),),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Expanded(
-                                          child: Text('اسحب اموالك عن طريق ماستر كارد',
-                                            textAlign: TextAlign.end,
-                                            style: TextStyle(fontSize: 14,color: Colors.black),),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                )
-                                ),
-                                SizedBox(width: 12,),
-                                Image.asset('assets/images/mastercard.png',width: 80,height: 80,)
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    //     GestureDetector(
+                //       onTap: () async {
+                //         final url =
+                //             'https://t.me/$telegram';
+                //         await launch(
+                //           url,
+                //           enableJavaScript: true,
+                //         ).catchError((e) {
+                //           showToastError(context: context,text:  e.toString());
+                //         });
+                //       },
+                //       child: Container(
+                //         padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 16),
+                //         margin: const EdgeInsets.symmetric(horizontal: 20,),
+                //         width: double.maxFinite,
+                //         decoration: BoxDecoration(
+                //           color: Colors.white,
+                //           borderRadius: BorderRadius.circular(20),
+                //           border: Border.all(
+                //             color: Colors.grey.withOpacity(0.5),
+                //             width: 2,
+                //           ),
+                //           boxShadow: [
+                //             BoxShadow(
+                //               color: secoundColor.withOpacity(0.1),
+                //               spreadRadius: 4,
+                //               blurRadius: 5,
+                //               offset: const Offset(0, 6),
+                //             ),
+                //           ],
+                //         ),
+                //         child: Column(
+                //           crossAxisAlignment: CrossAxisAlignment.end,
+                //           children: [
+                //             Row(
+                //               mainAxisAlignment: MainAxisAlignment.end,
+                //               children: [
+                //                 Expanded(
+                //                     child: Column(
+                //                   children: [
+                //                     Row(
+                //                       mainAxisAlignment: MainAxisAlignment.end,
+                //                       children: [
+                //                         Text(' زين كاش ',
+                //                           textAlign: TextAlign.end,
+                //                           style: TextStyle(fontSize: 16,color: Colors.black),),
+                //                       ],
+                //                     ),
+                //                     Row(
+                //                       mainAxisAlignment: MainAxisAlignment.end,
+                //                       children: [
+                //                         Expanded(
+                //                           child: Text('اسحب اموالك عن طريق زين كاش',
+                //                             textAlign: TextAlign.end,
+                //                             style: TextStyle(fontSize: 14,color: Colors.black),),
+                //                         ),
+                //                       ],
+                //                     ),
+                //                   ],
+                //                 )
+                //                 ),
+                //                 SizedBox(width: 12,),
+                //                 Image.asset('assets/images/unnamed 1.png',width: 80,height: 80,)
+                //               ],
+                //             ),
+                //           ],
+                //         ),
+                //       ),
+                //     ),
+                //     SizedBox(height: 10,),
+                //     GestureDetector(
+                //       onTap: () async {
+                //         final url =
+                //             'https://t.me/$telegram';
+                //         await launch(
+                //           url,
+                //           enableJavaScript: true,
+                //         ).catchError((e) {
+                //           showToastError(context: context,text:  e.toString());
+                //         });
+                //       },
+                //       child: Container(
+                //         padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 16),
+                //         margin: const EdgeInsets.symmetric(horizontal: 20,),
+                //         width: double.maxFinite,
+                //         decoration: BoxDecoration(
+                //           color: Colors.white,
+                //           borderRadius: BorderRadius.circular(20),
+                //           border: Border.all(
+                //             color: Colors.grey.withOpacity(0.5),
+                //             width: 2,
+                //           ),
+                //           boxShadow: [
+                //             BoxShadow(
+                //               color: secoundColor.withOpacity(0.1),
+                //               spreadRadius: 4,
+                //               blurRadius: 5,
+                //               offset: const Offset(0, 6),
+                //             ),
+                //           ],
+                //         ),
+                //         child: Column(
+                //           crossAxisAlignment: CrossAxisAlignment.end,
+                //           children: [
+                //             Row(
+                //               mainAxisAlignment: MainAxisAlignment.end,
+                //               children: [
+                //                 Expanded(
+                //                     child: Column(
+                //                   children: [
+                //                     Row(
+                //                       mainAxisAlignment: MainAxisAlignment.end,
+                //                       children: [
+                //                         Text(' ماستر كارد ',
+                //                           textAlign: TextAlign.end,
+                //                           style: TextStyle(fontSize: 16,color: Colors.black),),
+                //                       ],
+                //                     ),
+                //                     Row(
+                //                       mainAxisAlignment: MainAxisAlignment.end,
+                //                       children: [
+                //                         Expanded(
+                //                           child: Text('اسحب اموالك عن طريق ماستر كارد',
+                //                             textAlign: TextAlign.end,
+                //                             style: TextStyle(fontSize: 14,color: Colors.black),),
+                //                         ),
+                //                       ],
+                //                     ),
+                //                   ],
+                //                 )
+                //                 ),
+                //                 SizedBox(width: 12,),
+                //                 Image.asset('assets/images/mastercard.png',width: 80,height: 80,)
+                //               ],
+                //             ),
+                //           ],
+                //         ),
+                //       ),
+                //     ),
                     SizedBox(height: 40,),
                     GestureDetector(
                       onTap: () async {
