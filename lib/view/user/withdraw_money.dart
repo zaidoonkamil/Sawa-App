@@ -3,7 +3,6 @@ import 'package:dananer/core/%20navigation/navigation.dart';
 import 'package:dananer/core/styles/themes.dart';
 import 'package:dananer/core/widgets/appBar.dart';
 import 'package:dananer/core/widgets/card_counter.dart';
-import 'package:dananer/view/user/contect_woner.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -12,7 +11,6 @@ import '../../controllar/cubit.dart';
 import '../../controllar/states.dart';
 import '../../core/widgets/constant.dart';
 import '../../core/widgets/show_toast.dart';
-import '../../model/ProfileModel.dart';
 
 class WithdrawMoney extends StatelessWidget {
   const WithdrawMoney({super.key, });
@@ -59,7 +57,7 @@ class WithdrawMoney extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Expanded(child: Text('علما ان عمولة السحب 100 سوا من قيمة المبلغ الاجمال',
+                              Expanded(child: Text('علما ان عمولة السحب 100 كوينز من قيمة المبلغ الاجمال',
                                 textAlign: TextAlign.end,
                                 style: TextStyle(fontSize: 16,color: Colors.black54),)),
                               SizedBox(width: 6,),
@@ -78,11 +76,8 @@ class WithdrawMoney extends StatelessWidget {
                     SizedBox(height: 20,),
                     GestureDetector(
                       onTap: () async {
-                        // try {
-                        final phoneNumber = phone.trim();
-                        print(phoneNumber);
                         final url =
-                            'https://wa.me/+964$phoneNumber?text=';
+                            'https://t.me/$telegram';
                         await launch(
                           url,
                           enableJavaScript: true,
@@ -151,11 +146,8 @@ class WithdrawMoney extends StatelessWidget {
                     SizedBox(height: 10,),
                     GestureDetector(
                       onTap: () async {
-                        // try {
-                        final phoneNumber = phone.trim();
-                        print(phoneNumber);
                         final url =
-                            'https://wa.me/+964$phoneNumber?text=';
+                            'https://t.me/$telegram';
                         await launch(
                           url,
                           enableJavaScript: true,
@@ -224,11 +216,8 @@ class WithdrawMoney extends StatelessWidget {
                     SizedBox(height: 40,),
                     GestureDetector(
                       onTap: () async {
-                        // try {
-                        final phoneNumber = phone.trim();
-                        print(phoneNumber);
                         final url =
-                            'https://wa.me/+964$phoneNumber?text=';
+                            'https://t.me/$telegram';
                         await launch(
                           url,
                           enableJavaScript: true,

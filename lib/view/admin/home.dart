@@ -173,7 +173,7 @@ class HomeAdmin extends StatelessWidget {
                                         ),
                                       ),
                                       SizedBox(height: 20,),
-                                      Text('ارسال السوا',style: TextStyle(fontSize: 18),),
+                                      Text('ارسال الكوينز',style: TextStyle(fontSize: 18),),
                                       SizedBox(height: 20,),
                                       Row(
                                         children: [
@@ -217,7 +217,6 @@ class HomeAdmin extends StatelessWidget {
                                           ),
                                         ],
                                       ),
-
                                     ],
                                   );
                                 },
@@ -300,7 +299,7 @@ class HomeAdmin extends StatelessWidget {
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
                                             Expanded(child:
-                                            Text('لام يقم هذا المستخدم بالاشتراك بأي عداد',
+                                            Text('لم يقم هذا المستخدم بالاشتراك بأي عداد',
                                                textAlign: TextAlign.center,style: TextStyle(fontSize: 18),)),
                                           ],
                                         ),

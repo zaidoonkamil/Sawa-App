@@ -150,7 +150,7 @@ class TimerScreen extends StatelessWidget {
                                 ),
                                 child: Row(
                                   children: [
-                                   Text('سوا',
+                                   Text('كوينز',
                                       textAlign: TextAlign.end,
                                       style: TextStyle(fontSize: 18,color: Colors.blue),),
                                     Text(cubit.profileModel!.totalPoints.toString(),

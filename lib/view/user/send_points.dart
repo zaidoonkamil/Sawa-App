@@ -67,9 +67,9 @@ class SendPoints extends StatelessWidget {
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          Text('نقطة ',style: TextStyle(color: Colors.white,fontSize: 20),),
+                                          Text('كوينز ',style: TextStyle(color: Colors.white,fontSize: 20),),
                                           Text(sawa,style: TextStyle(color: Colors.white,fontSize: 20),),
-                                          Image.asset('assets/images/logo.png',scale: 39,),
+                                          Image.asset('assets/images/logo.png',width: 40,height: 40,),
                                         ],
                                       ),
                                     ],
@@ -105,7 +105,7 @@ class SendPoints extends StatelessWidget {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Expanded(child: Text('يمكنك ارسال النقاط الى صديقك عن طريق كود الدعوة ',
+                                  Expanded(child: Text('يمكنك ارسال الكوينز الى صديقك عن طريق كود الدعوة ',
                                     textAlign: TextAlign.end,
                                     style: TextStyle(fontSize: 16,color: Colors.black54),)),
                                   SizedBox(width: 6,),
@@ -217,7 +217,7 @@ class SendPoints extends StatelessWidget {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Expanded(child: Text('علما ان عمولة الارسال %10 \n وحد التحويل اليومي 500 سوا ',
+                                  Expanded(child: Text('علما ان عمولة الارسال %10 \n وحد التحويل اليومي 500 كوينز ',
                                     textAlign: TextAlign.end,
                                     style: TextStyle(fontSize: 16,color: Colors.black54),)),
                                   SizedBox(width: 6,),

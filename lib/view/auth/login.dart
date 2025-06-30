@@ -1,10 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:dananer/controllar/cubit.dart';
 import 'package:dananer/controllar/states.dart';
-import 'package:dananer/view/admin/home.dart';
-import 'package:dananer/view/auth/loginCode.dart';
 import 'package:dananer/view/auth/register.dart';
-import 'package:dananer/view/user/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -75,8 +72,8 @@ class Login extends StatelessWidget {
                           height: 100,
                         ),
                         const SizedBox(height: 12),
-                        const Text(
-                          'تطبيق سوا',
+                        Text(
+                          nameApp,
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,

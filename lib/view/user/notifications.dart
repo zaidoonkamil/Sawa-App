@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../core/ navigation/navigation.dart';
 import '../../../../core/styles/themes.dart';
 import '../../controllar/cubit.dart';
 import '../../controllar/states.dart';
@@ -117,7 +116,7 @@ class Notifications extends StatelessWidget {
                           fallback: (c)=>Center(child: Text('لا يوجد بيانات ليتم عرضها')));
                     },
                         fallback: (c)=>Center(child: CircularProgressIndicator()))
-                  )
+                  ),
                 ],
               ),
             ),

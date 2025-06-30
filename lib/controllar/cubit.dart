@@ -351,7 +351,7 @@ class AppCubit extends Cubit<AppStates> {
       },
     ).then((value) {
       showToastSuccess(
-        text: 'تم كسب $amount سوا ',
+        text: 'تم كسب $amount كوينز ',
         context: context,
       );
       updateGems(gems: myValue, context: context);
@@ -380,7 +380,7 @@ class AppCubit extends Cubit<AppStates> {
       },
     ).then((value) {
       showToastSuccess(
-        text: 'تم ارسال $amount سوا ',
+        text: 'تم ارسال $amount كوينز ',
         context: context,
       );
       emit(SendSawaSuccessState());

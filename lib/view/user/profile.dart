@@ -133,52 +133,52 @@ class Profile extends StatelessWidget {
                           //     SizedBox(height: 14,),
                           //   ],
                           // ),
-                          Column(
-                            children: [
-                              GestureDetector(
-                                onTap: () async {
-                                  // try {
-                                  final phoneNumber = phone.trim();
-                                  print(phoneNumber);
-                                  final url =
-                                      'https://wa.me/+964$phoneNumber?text=';
-                                  await launch(
-                                    url,
-                                    enableJavaScript: true,
-                                  ).catchError((e) {
-                                    showToastError(context: context,text:  e.toString());
-                                  });
-                                },
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Image.asset('assets/images/Group 1171275617.png'),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'الاتصال المباشر بالدعم',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.grey,
-                                          ),
-                                        ),
-                                        SizedBox(width: 4,),
-                                        Image.asset('assets/images/Vector (1).png'),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 6,),
-                              Container(width: double.maxFinite,height: 2,color: Colors.black12,),
-                              SizedBox(height: 14,),
-                            ],
-                          ),
+                          // Column(
+                          //   children: [
+                          //     GestureDetector(
+                          //       onTap: () async {
+                          //         // try {
+                          //         final phoneNumber = phone.trim();
+                          //         print(phoneNumber);
+                          //         final url =
+                          //             'https://wa.me/+964$phoneNumber?text=';
+                          //         await launch(
+                          //           url,
+                          //           enableJavaScript: true,
+                          //         ).catchError((e) {
+                          //           showToastError(context: context,text:  e.toString());
+                          //         });
+                          //       },
+                          //       child: Row(
+                          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //         children: [
+                          //           Row(
+                          //             children: [
+                          //               Image.asset('assets/images/Group 1171275617.png'),
+                          //             ],
+                          //           ),
+                          //           Row(
+                          //             children: [
+                          //               Text(
+                          //                 'الاتصال المباشر بالدعم',
+                          //                 style: TextStyle(
+                          //                   fontSize: 16,
+                          //                   fontWeight: FontWeight.bold,
+                          //                   color: Colors.grey,
+                          //                 ),
+                          //               ),
+                          //               SizedBox(width: 4,),
+                          //               Image.asset('assets/images/Vector (1).png'),
+                          //             ],
+                          //           ),
+                          //         ],
+                          //       ),
+                          //     ),
+                          //     SizedBox(height: 6,),
+                          //     Container(width: double.maxFinite,height: 2,color: Colors.black12,),
+                          //     SizedBox(height: 14,),
+                          //   ],
+                          // ),
                           Column(
                             children: [
                               GestureDetector(
@@ -191,7 +191,6 @@ class Profile extends StatelessWidget {
                                   await launch(
                                     url,
                                     enableJavaScript: true,
-                                    // forceWebView: true,
                                   ).catchError((e) {
                                     showToastError(context: context,text:  e.toString());
                                   });

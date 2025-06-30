@@ -34,7 +34,7 @@ class Appbar extends StatelessWidget {
               navigateTo(context, Notifications());
             },
           ),
-          Image.asset('assets/images/Orange Minimalist E Wallet Logo (3).png'),
+          Image.asset('assets/images/Orange Minimalist E Wallet Logo (3).png',height: 55,width: 55,),
           Container(
             width: 50,
             height: 60,
@@ -77,7 +77,7 @@ class AppbarBack extends StatelessWidget {
               navigateBack(context);
             },
           ),
-          Image.asset('assets/images/Orange Minimalist E Wallet Logo (3).png'),
+          Image.asset('assets/images/Orange Minimalist E Wallet Logo (3).png',height: 55,width: 55,),
           Container(
             width: 50,
             height: 60,

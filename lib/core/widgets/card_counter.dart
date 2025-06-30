@@ -66,7 +66,7 @@ class CardCounter extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                type !='gems'? Text(' عداد $point سوا ',
+                                type !='gems'? Text(' عداد $point كوينز ',
                                   textAlign: TextAlign.end,
                                   style: TextStyle(fontSize: 20,color: Colors.black),):Text(' عداد $point جوهرة ',
                                   textAlign: TextAlign.end,
@@ -116,7 +116,7 @@ class CardCounter extends StatelessWidget {
                           ),
                           child: Row(
                             children: [
-                              type !='gems'? Text('سوا',
+                              type !='gems'? Text('كوينز',
                                 textAlign: TextAlign.end,
                                 style: TextStyle(fontSize: 18,color: Colors.blue),):Text('جوهرة',
                                 textAlign: TextAlign.end,
@@ -222,7 +222,7 @@ class CardCounter extends StatelessWidget {
                               ),
                               child: Row(
                                 children: [
-                                  Text('سوا',
+                                  Text('كوينز',
                                     textAlign: TextAlign.end,
                                     style: TextStyle(fontSize: 18,color: Colors.blue),),
                                   SizedBox(width: 2,),
