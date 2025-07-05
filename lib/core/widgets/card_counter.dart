@@ -1,5 +1,6 @@
 import 'package:dananer/core/%20navigation/navigation.dart';
 import 'package:dananer/core/navigation_bar/navigation_bar.dart';
+import 'package:dananer/core/widgets/constant.dart';
 import 'package:dananer/core/widgets/show_toast.dart';
 import 'package:dananer/view/user/contect_woner.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,11 @@ class CardCounter extends StatelessWidget {
             showToastInfo(text: 'تمت عملية الشراء بنجاح', context: context);
             navigateAndFinish(context, BottomNavBar());
           }
+          if(state is DeleteCounterSuccessState){
+            showToastInfo(text: 'تمت عملية الحذف بنجاح', context: context);
+            navigateBack(context);
+          }
+
         },
         builder: (context,state){
           var cubit=AppCubit.get(context);
@@ -136,7 +142,7 @@ class CardCounter extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        GestureDetector(
+                       adminOrUser =="admin"?Container(): GestureDetector(
                           onTap: (){
                             showDialog(
                               context: context,
@@ -238,6 +244,69 @@ class CardCounter extends StatelessWidget {
 
                       ],
                     ),
+                    SizedBox(height: 10,),
+                    adminOrUser =="admin"? GestureDetector(
+                      onTap: (){
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              backgroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              title: Text("هل حقا ترغب في الحذف ؟",
+                                style: TextStyle(fontSize: 18),
+                                textAlign: TextAlign.center,),
+                              content: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text("إلغاء",style: TextStyle(color: primaryColor),),
+                                  ),
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: primaryColor,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      cubit.deleteCounter(context: context, id: id);
+                                    },
+                                    child: Text("نعم",style: TextStyle(color: Colors.white),),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 12),
+                        decoration: BoxDecoration(
+                          color: secoundColor,
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: secoundColor.withOpacity(0.5),
+                              spreadRadius: 4,
+                              blurRadius: 5,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('حذف',style: TextStyle(fontSize: 16,color: Colors.white),),
+                          ],
+                        ),
+                      ),
+                    ):Container(),
                   ],
                 ),
               ),

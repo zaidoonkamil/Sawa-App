@@ -1,6 +1,7 @@
 import 'package:dananer/view/admin/home.dart';
 import 'package:dananer/view/auth/login.dart';
 import 'package:dananer/view/user/home.dart';
+import 'package:dananer/view/user/how_as.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/ navigation/navigation.dart';
@@ -22,10 +23,14 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(const Duration(seconds: 1), () {
       Widget? widget;
+      bool? onBoarding = CacheHelper.getData(key: 'onBoarding');
       if(CacheHelper.getData(key: 'token') == null){
         token='';
+        if (onBoarding != null) {
           widget = const Login();
-
+        } else {
+          widget = HowAs();
+        }
       }else{
         if(CacheHelper.getData(key: 'role') == null){
           widget = const Login();

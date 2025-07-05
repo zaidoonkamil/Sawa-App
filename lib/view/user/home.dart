@@ -175,42 +175,42 @@ class Home extends StatelessWidget {
                               children: [
                                 Row(
                                   children: [
-                                    // Expanded(
-                                    //   child: GestureDetector(
-                                    //     onTap: (){
-                                    //       navigateTo(context, LuckWheelPage(myValue: cubit.profileModel!.jewel,));
-                                    //     },
-                                    //     child: Container(
-                                    //       padding: EdgeInsets.symmetric(horizontal: 20,vertical: 20),
-                                    //       decoration: BoxDecoration(
-                                    //         borderRadius: BorderRadius.circular(10),
-                                    //         color: Colors.white,
-                                    //         boxShadow: [
-                                    //           BoxShadow(
-                                    //             color: Colors.grey.withOpacity(0.1),
-                                    //             spreadRadius: 1,
-                                    //             blurRadius: 5,
-                                    //             offset: const Offset(0, 2),
-                                    //           ),
-                                    //         ],
-                                    //       ),
-                                    //       child: Column(
-                                    //         children: [
-                                    //           Container(
-                                    //               padding: EdgeInsets.all(10),
-                                    //               decoration: BoxDecoration(
-                                    //                 shape: BoxShape.circle,
-                                    //                 color: Colors.red.withOpacity(0.2),
-                                    //               ),
-                                    //               child: Image.asset('assets/images/iconoir_color-wheel.png',scale: 0.7,)),
-                                    //           SizedBox(height: 10,),
-                                    //           Text('عجلة الحظ',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
-                                    //         ],
-                                    //       ),
-                                    //     ),
-                                    //   ),
-                                    // ),
-                                    // SizedBox(width: 15,),
+                                    Expanded(
+                                      child: GestureDetector(
+                                        onTap: (){
+                                          navigateTo(context, LuckWheelPage(myValue: cubit.profileModel!.jewel,));
+                                        },
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(10),
+                                            color: Colors.white,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey.withOpacity(0.1),
+                                                spreadRadius: 1,
+                                                blurRadius: 5,
+                                                offset: const Offset(0, 2),
+                                              ),
+                                            ],
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              Container(
+                                                  padding: EdgeInsets.all(10),
+                                                  decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    color: Colors.red.withOpacity(0.2),
+                                                  ),
+                                                  child: Image.asset('assets/images/confetti.png',width: 40,)),
+                                              SizedBox(height: 10,),
+                                              Text('التسلية',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(width: 15,),
                                     Expanded(
                                       child: GestureDetector(
                                         onTap: (){

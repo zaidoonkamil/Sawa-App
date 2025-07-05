@@ -8,6 +8,8 @@ import '../../../core/widgets/constant.dart';
 import '../../../core/widgets/show_toast.dart';
 import '../../controllar/cubit.dart';
 import '../../controllar/states.dart';
+import '../../core/ navigation/navigation.dart';
+import 'how_as.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -179,6 +181,40 @@ class Profile extends StatelessWidget {
                           //     SizedBox(height: 14,),
                           //   ],
                           // ),
+                          GestureDetector(
+                            onTap: (){
+                              navigateTo(context, HowAs());
+                            },
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Icon(Icons.arrow_back_ios_new_rounded),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'سياسة الخصوصية',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                        SizedBox(width: 4,),
+                                        Image.asset('assets/images/info-circle.png'),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 6,),
+                                Container(width: double.maxFinite,height: 2,color: Colors.black12,),
+                                SizedBox(height: 14,),
+                              ],
+                            ),
+                          ),
+
                           Column(
                             children: [
                               GestureDetector(
@@ -200,8 +236,6 @@ class Profile extends StatelessWidget {
                                   children: [
                                     Row(
                                       children: [
-                                        // Image.asset('assets/images/Group 1171275618.png'),
-                                        // SizedBox(width: 4,),
                                         Image.asset('assets/images/Group 1171275618c.png'),
                                       ],
                                     ),

@@ -38,6 +38,7 @@ class LuckWheelPage extends StatelessWidget {
     final random = Random();
     int selectedIndex;
 
+    // 12=3
     if (spinCount < 2) {
       final tryAgainIndexes = items
           .asMap()
@@ -95,7 +96,7 @@ class LuckWheelPage extends StatelessWidget {
                     padding: EdgeInsets.symmetric(vertical: 12),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        color: Colors.black,
+                        color: Colors.orange,
                         border: Border.all(
                             color: Colors.grey
                         )
@@ -142,7 +143,7 @@ class LuckWheelPage extends StatelessWidget {
                             style: FortuneItemStyle(
                               textStyle: TextStyle(fontSize: 16),
                               borderWidth: 3,
-                              borderColor: Colors.orange,
+                              borderColor: primaryColor,
                               color: secoundColor,
                             ),
                           ),
@@ -159,7 +160,7 @@ class LuckWheelPage extends StatelessWidget {
                       margin: const EdgeInsets.symmetric(horizontal: 20,),
                       width: 200,
                       decoration: BoxDecoration(
-                        color: Colors.deepOrangeAccent,
+                        color: Colors.orange,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(

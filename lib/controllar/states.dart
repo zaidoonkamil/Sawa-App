@@ -12,6 +12,10 @@ class SignUpLoadingState extends AppStates {}
 class SignUpSuccessState extends AppStates {}
 class SignUpErrorState extends AppStates {}
 
+class DeleteCounterLoadingState extends AppStates {}
+class DeleteCounterSuccessState extends AppStates {}
+class DeleteCounterErrorState extends AppStates {}
+
 class GetProfileLoadingState extends AppStates {}
 class GetProfileSuccessState extends AppStates {}
 class GetProfileErrorState extends AppStates {}

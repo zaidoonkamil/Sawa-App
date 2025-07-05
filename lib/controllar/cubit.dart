@@ -49,6 +49,23 @@ class AppCubit extends Cubit<AppStates> {
     });
   }
 
+  void deleteCounter({required BuildContext context,required String id}) {
+    emit(DeleteCounterLoadingState());
+    DioHelper.deleteData(
+        url: '/counters/$id',
+    ).then((value) {
+      emit(DeleteCounterSuccessState());
+    }).catchError((error) {
+      if (error is DioError) {
+        showToastError(text: error.toString(),
+          context: context,);
+        emit(DeleteCounterErrorState());
+      }else {
+        print("Unknown Error: $error");
+      }
+    });
+  }
+
   String? time;
   void timeOfDay({required BuildContext context}) {
     emit(TimeOfDayLoadingState());
