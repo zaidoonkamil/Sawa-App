@@ -93,41 +93,39 @@ class HowAs extends StatelessWidget {
                       ),
                     ),
                   ),
-                  token != ''? Container():Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        GestureDetector(
-                          onTap: (){
-                            CacheHelper.saveData(key: 'onBoarding',value: true );
-                            navigateAndFinish(context, Login());
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 12),
-                            margin: const EdgeInsets.symmetric(horizontal: 30,vertical: 12),
-                            decoration: BoxDecoration(
-                              color: secoundColor,
-                              borderRadius: BorderRadius.circular(12),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: secoundColor.withOpacity(0.5),
-                                  spreadRadius: 4,
-                                  blurRadius: 5,
-                                  offset: const Offset(0, 3),
-                                ),
-                              ],
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('موافق',style: TextStyle(fontSize: 16,color: Colors.white),),
-                              ],
-                            ),
+                  token != ''? Container():Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: (){
+                          CacheHelper.saveData(key: 'onBoarding',value: true );
+                          navigateAndFinish(context, Login());
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 12),
+                          margin: const EdgeInsets.symmetric(horizontal: 30,vertical: 12),
+                          decoration: BoxDecoration(
+                            color: secoundColor,
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: [
+                              BoxShadow(
+                                color: secoundColor.withOpacity(0.5),
+                                spreadRadius: 4,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('موافق',style: TextStyle(fontSize: 16,color: Colors.white),),
+                            ],
                           ),
                         ),
-                        SizedBox(height: 20,),
-                      ],
-                    ),
+                      ),
+                      SizedBox(height: 20,),
+                    ],
                   ),
                 ],
               ),
