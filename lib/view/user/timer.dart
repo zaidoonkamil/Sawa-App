@@ -167,14 +167,14 @@ class TimerScreen extends StatelessWidget {
                                     color: Colors.blue.withOpacity(0.2),
                                     border: Border.all(
                                         color: Colors.blue
-                                    )
+                                    ),
                                 ),
                                 child: Row(
                                   children: [
                                     Text('جوهرة',
                                       textAlign: TextAlign.end,
                                       style: TextStyle(fontSize: 18,color: Colors.blue),),
-                                    Text(cubit.profileModel!.totalGems.toString(),
+                                    Text('${cubit.profileModel!.totalGems + 30}'.toString(),
                                       textAlign: TextAlign.end,
                                       style: TextStyle(fontSize: 18,color: Colors.blue),),
                                   ],

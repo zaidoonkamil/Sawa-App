@@ -3,6 +3,7 @@ import 'package:dananer/core/%20navigation/navigation.dart';
 import 'package:dananer/core/widgets/appBar.dart';
 import 'package:dananer/view/user/send_points.dart';
 import 'package:dananer/view/user/store/store.dart';
+import 'package:dananer/view/user/subscription_market.dart';
 import 'package:dananer/view/user/withdraw_money.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -122,7 +123,7 @@ class Shop extends StatelessWidget {
                                 Expanded(
                                   child: GestureDetector(
                                     onTap: (){
-
+                                      navigateTo(context, SubscriptionMarket());
                                     },
                                     child: Container(
                                       padding: EdgeInsets.symmetric(horizontal: 20,vertical: 20),

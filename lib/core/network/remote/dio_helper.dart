@@ -86,6 +86,7 @@ class DioHelper {
   static Future<Response> deleteData({
     required String url,
     String? token,
+    Map<String, dynamic>? data,
   }) async
   {
     dio!.options.headers =
@@ -97,6 +98,7 @@ class DioHelper {
 
     return dio!.delete(
       url,
+      data: data,
     );
   }
 

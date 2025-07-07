@@ -75,18 +75,27 @@ class UserCounter {
   int userId;
   int counterId;
   int remainingDays;
+  int points;
+  int price;
+  bool isForSale;
   DateTime createdAt;
   DateTime updatedAt;
   Counter counter;
+  List<CounterSale> counterSales;
 
   UserCounter({
     required this.id,
     required this.userId,
     required this.counterId,
+    required this.points,
     required this.remainingDays,
+    required this.price,
+    required this.isForSale,
     required this.createdAt,
     required this.updatedAt,
     required this.counter,
+    required this.counterSales,
+
   });
 
   factory UserCounter.fromJson(Map<String, dynamic> json) => UserCounter(
@@ -96,6 +105,10 @@ class UserCounter {
     remainingDays: json["remainingDays"],
     createdAt: DateTime.parse(json["createdAt"]),
     updatedAt: DateTime.parse(json["updatedAt"]),
+    counterSales: List<CounterSale>.from(json["CounterSales"].map((x) => CounterSale.fromJson(x))),
+    points: json["points"],
+    price: json["price"],
+    isForSale: json["isForSale"],
     counter: Counter.fromJson(json["Counter"]),
   );
 
@@ -107,6 +120,54 @@ class UserCounter {
     "createdAt": createdAt.toIso8601String(),
     "updatedAt": updatedAt.toIso8601String(),
     "Counter": counter.toJson(),
+  };
+}
+
+class CounterSale {
+  int id;
+  int userId;
+  int userCounterId;
+  int originalPoints;
+  int pointsAfterCut;
+  int price;
+  bool isSold;
+  DateTime createdAt;
+  DateTime updatedAt;
+
+  CounterSale({
+    required this.id,
+    required this.userId,
+    required this.userCounterId,
+    required this.originalPoints,
+    required this.pointsAfterCut,
+    required this.price,
+    required this.isSold,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+
+  factory CounterSale.fromJson(Map<String, dynamic> json) => CounterSale(
+    id: json["id"],
+    userId: json["userId"],
+    userCounterId: json["userCounterId"],
+    originalPoints: json["originalPoints"],
+    pointsAfterCut: json["pointsAfterCut"],
+    price: json["price"],
+    isSold: json["isSold"],
+    createdAt: DateTime.parse(json["createdAt"]),
+    updatedAt: DateTime.parse(json["updatedAt"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "userId": userId,
+    "userCounterId": userCounterId,
+    "originalPoints": originalPoints,
+    "pointsAfterCut": pointsAfterCut,
+    "price": price,
+    "isSold": isSold,
+    "createdAt": createdAt.toIso8601String(),
+    "updatedAt": updatedAt.toIso8601String(),
   };
 }
 

@@ -14,6 +14,7 @@ import '../model/AllNotificationModel.dart';
 import '../model/CounterModel.dart';
 import '../model/GetUserModel.dart';
 import '../model/ProfileModel.dart';
+import '../model/SubscriptionMarketModel.dart';
 
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitialState());
@@ -64,6 +65,69 @@ class AppCubit extends Cubit<AppStates> {
         print("Unknown Error: $error");
       }
     });
+  }
+
+  void deleteCounterSell({required BuildContext context,required String idCountersSall,required String userId}) {
+    emit(DeleteCounterLoadingState());
+    DioHelper.deleteData(
+      url: '/counters/sell/$idCountersSall',
+      data: {
+        'userId': userId,
+      }
+    ).then((value) {
+      emit(DeleteCounterSuccessState());
+    }).catchError((error) {
+      if (error is DioError) {
+        showToastError(text: error.toString(),
+          context: context,);
+        emit(DeleteCounterErrorState());
+      }else {
+        print("Unknown Error: $error");
+      }
+    });
+  }
+
+  void addCounterSell({required BuildContext context,required String userCounterId,required String price}) {
+    emit(AddCounterLoadingState());
+    DioHelper.postData(
+      url: '/counters/sell',
+      data: {
+        'userId': id,
+        'userCounterId': userCounterId,
+        'price': price,
+      }
+    ).then((value) {
+      emit(AddCounterSuccessState());
+    }).catchError((error) {
+      if (error is DioError) {
+        showToastError(text: error.toString(),
+          context: context,);
+        emit(AddCounterErrorState());
+      }else {
+        print("Unknown Error: $error");
+      }
+    });
+  }
+
+  void addCounterBuy({required BuildContext context,required String saleId,required String buyerId}) {
+    emit(AddCounterBuyLoadingState());
+    DioHelper.postData(
+      url: '/counters/buy',
+      data: {
+        'buyerId': id,
+        'saleId': saleId,
+      }
+    ).then((value) {
+      emit(AddCounterBuySuccessState());
+    }).catchError((error) {
+      if (error is DioError) {
+        final errorMessage = error.response?.data['error'] ?? 'حدث خطأ غير متوقع';
+        showToastError(text: errorMessage, context: context);
+      } else {
+        showToastError(text: 'خطأ في الاتصال بالخادم', context: context);
+      }
+    });
+
   }
 
   String? time;
@@ -220,6 +284,30 @@ class AppCubit extends Cubit<AppStates> {
           context: context,);
         print(error.toString());
         emit(GetProfileErrorState());
+      }else {
+        print("Unknown Error: $error");
+      }
+    });
+  }
+
+
+  List<SubscriptionMarketModel> subscriptionMarketList = [];
+  void getSubscriptionMarket({required BuildContext context,}) {
+    emit(GetSubscriptionMarketLoadingState());
+    DioHelper.getData(
+      url: '/counters/for-sale',
+      token: token,
+    ).then((value) {
+      subscriptionMarketList = (value.data as List)
+          .map((item) => SubscriptionMarketModel.fromJson(item))
+          .toList();
+      emit(GetSubscriptionMarketSuccessState());
+    }).catchError((error) {
+      if (error is DioError) {
+        showToastError(text: error.toString(),
+          context: context,);
+        print(error.toString());
+        emit(GetSubscriptionMarketErrorState());
       }else {
         print("Unknown Error: $error");
       }

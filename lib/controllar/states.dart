@@ -16,9 +16,21 @@ class DeleteCounterLoadingState extends AppStates {}
 class DeleteCounterSuccessState extends AppStates {}
 class DeleteCounterErrorState extends AppStates {}
 
+class AddCounterLoadingState extends AppStates {}
+class AddCounterSuccessState extends AppStates {}
+class AddCounterErrorState extends AppStates {}
+
+class AddCounterBuyLoadingState extends AppStates {}
+class AddCounterBuySuccessState extends AppStates {}
+class AddCounterBuyErrorState extends AppStates {}
+
 class GetProfileLoadingState extends AppStates {}
 class GetProfileSuccessState extends AppStates {}
 class GetProfileErrorState extends AppStates {}
+
+class GetSubscriptionMarketLoadingState extends AppStates {}
+class GetSubscriptionMarketSuccessState extends AppStates {}
+class GetSubscriptionMarketErrorState extends AppStates {}
 
 class GetDailyLoadingState extends AppStates {}
 class GetDailySuccessState extends AppStates {}
