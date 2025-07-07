@@ -1,4 +1,3 @@
-import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:dananer/core/navigation_bar/navigation_bar.dart';
 import 'package:dananer/core/widgets/appBar.dart';
 import 'package:dananer/core/widgets/show_toast.dart';
@@ -6,10 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/ navigation/navigation.dart';
-import '../../../../core/styles/themes.dart';
 import '../../controllar/cubit.dart';
 import '../../controllar/states.dart';
-import '../../core/widgets/custom_text_field.dart';
 
 class SendPoints extends StatelessWidget {
   const SendPoints({super.key, required this.sawa});
