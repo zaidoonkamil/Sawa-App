@@ -21,6 +21,7 @@ void main() async {
   OneSignal.Notifications.requestPermission(true);
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key,});
 

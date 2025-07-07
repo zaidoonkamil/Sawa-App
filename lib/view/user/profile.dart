@@ -107,80 +107,88 @@ class Profile extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          // Column(
-                          //   crossAxisAlignment: CrossAxisAlignment.center,
-                          //   children: [
-                          //     Row(
-                          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          //       children: [
-                          //         Icon(Icons.arrow_back_ios_new_rounded),
-                          //         Row(
-                          //           children: [
-                          //             Text(
-                          //               'من نحن',
-                          //               style: TextStyle(
-                          //                 fontSize: 16,
-                          //                 fontWeight: FontWeight.bold,
-                          //                 color: Colors.grey,
-                          //               ),
-                          //             ),
-                          //             SizedBox(width: 4,),
-                          //             Image.asset('assets/images/info-circle.png'),
-                          //           ],
-                          //         ),
-                          //       ],
-                          //     ),
-                          //     SizedBox(height: 6,),
-                          //     Container(width: double.maxFinite,height: 2,color: Colors.black12,),
-                          //     SizedBox(height: 14,),
-                          //   ],
-                          // ),
-                          // Column(
-                          //   children: [
-                          //     GestureDetector(
-                          //       onTap: () async {
-                          //         // try {
-                          //         final phoneNumber = phone.trim();
-                          //         print(phoneNumber);
-                          //         final url =
-                          //             'https://wa.me/+964$phoneNumber?text=';
-                          //         await launch(
-                          //           url,
-                          //           enableJavaScript: true,
-                          //         ).catchError((e) {
-                          //           showToastError(context: context,text:  e.toString());
-                          //         });
-                          //       },
-                          //       child: Row(
-                          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          //         children: [
-                          //           Row(
-                          //             children: [
-                          //               Image.asset('assets/images/Group 1171275617.png'),
-                          //             ],
-                          //           ),
-                          //           Row(
-                          //             children: [
-                          //               Text(
-                          //                 'الاتصال المباشر بالدعم',
-                          //                 style: TextStyle(
-                          //                   fontSize: 16,
-                          //                   fontWeight: FontWeight.bold,
-                          //                   color: Colors.grey,
-                          //                 ),
-                          //               ),
-                          //               SizedBox(width: 4,),
-                          //               Image.asset('assets/images/Vector (1).png'),
-                          //             ],
-                          //           ),
-                          //         ],
-                          //       ),
-                          //     ),
-                          //     SizedBox(height: 6,),
-                          //     Container(width: double.maxFinite,height: 2,color: Colors.black12,),
-                          //     SizedBox(height: 14,),
-                          //   ],
-                          // ),
+                          GestureDetector(
+                            onTap: (){
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    backgroundColor: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    title: Column(
+                                      children: [
+                                        Text("كود الاحالة الخاص بك",
+                                          style: TextStyle(fontSize: 18),
+                                          textAlign: TextAlign.center,),
+                                        Text("شارك هذا الكود مع اصدقائك للحصول على مكافأت",
+                                          style: TextStyle(fontSize: 16,color: Colors.grey),
+                                          textAlign: TextAlign.center,),
+                                        SizedBox(height: 20,),
+                                        Container(
+                                          padding: EdgeInsets.symmetric(horizontal: 20,vertical: 8),
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(8),
+                                              color: Colors.grey.withOpacity(0.4)
+                                          ),
+                                          child: Text(
+                                            cubit.profileModel!.id.toString(),
+                                            style: TextStyle(fontSize: 20,color: Colors.black),
+                                            textAlign: TextAlign.center,),
+                                        ),
+                                      ],
+                                    ),
+                                    content: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: primaryColor,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(8),
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            navigateBack(context);
+                                          },
+                                          child: Text("اغلاق",style: TextStyle(color: Colors.white),),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Icon(Icons.arrow_back_ios_new_rounded),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'رمز الاحالة',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                        SizedBox(width: 4,),
+                                        Image.asset('assets/images/info-circle.png'),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 6,),
+                                Container(width: double.maxFinite,height: 2,color: Colors.black12,),
+                                SizedBox(height: 14,),
+                              ],
+                            ),
+                          ),
                           GestureDetector(
                             onTap: (){
                               navigateTo(context, HowAs());
