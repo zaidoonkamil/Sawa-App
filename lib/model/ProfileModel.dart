@@ -105,7 +105,9 @@ class UserCounter {
     remainingDays: json["remainingDays"],
     createdAt: DateTime.parse(json["createdAt"]),
     updatedAt: DateTime.parse(json["updatedAt"]),
-    counterSales: List<CounterSale>.from(json["CounterSales"].map((x) => CounterSale.fromJson(x))),
+    counterSales: json["CounterSales"] != null
+        ? List<CounterSale>.from(json["CounterSales"].map((x) => CounterSale.fromJson(x)))
+        : [],
     points: json["points"],
     price: json["price"],
     isForSale: json["isForSale"],
