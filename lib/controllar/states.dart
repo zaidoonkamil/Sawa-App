@@ -24,6 +24,10 @@ class AddCounterBuyLoadingState extends AppStates {}
 class AddCounterBuySuccessState extends AppStates {}
 class AddCounterBuyErrorState extends AppStates {}
 
+class AddWithdrawMoneyLoadingState extends AppStates {}
+class AddWithdrawMoneySuccessState extends AppStates {}
+class AddWithdrawMoneyErrorState extends AppStates {}
+
 class GetProfileLoadingState extends AppStates {}
 class GetProfileSuccessState extends AppStates {}
 class GetProfileErrorState extends AppStates {}
@@ -67,6 +71,14 @@ class UpdateGemsErrorState extends AppStates {}
 class GetCounterLoadingState extends AppStates {}
 class GetCounterSuccessState extends AppStates {}
 class GetCounterErrorState extends AppStates {}
+
+class GetWithdrawalRequestLoadingState extends AppStates {}
+class GetWithdrawalRequestSuccessState extends AppStates {}
+class GetWithdrawalRequestErrorState extends AppStates {}
+
+class DeleteWithdrawalRequestLoadingState extends AppStates {}
+class DeleteWithdrawalRequestSuccessState extends AppStates {}
+class DeleteWithdrawalRequestErrorState extends AppStates {}
 
 class GetAllNotificationLoadingState extends AppStates {}
 class GetAllNotificationSuccessState extends AppStates {}

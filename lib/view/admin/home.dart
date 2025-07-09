@@ -2,12 +2,15 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:dananer/controllar/cubit.dart';
 import 'package:dananer/controllar/states.dart';
 import 'package:dananer/core/widgets/show_toast.dart';
+import 'package:dananer/view/admin/withdrawals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../core/ navigation/navigation.dart';
 import '../../core/styles/themes.dart';
 import '../../core/widgets/appBar.dart';
 import '../../core/widgets/custom_text_field.dart';
+import '../user/contect_woner.dart';
 
 
 class HomeAdmin extends StatelessWidget {
@@ -42,6 +45,32 @@ class HomeAdmin extends StatelessWidget {
                         child: Column(
                           children: [
                             const SizedBox(height: 24,),
+                            GestureDetector(
+                              onTap: (){
+                                navigateTo(context, Withdrawals());
+                              },
+                              child: Container(
+                                width: double.infinity,
+                                height: 48,
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.2),
+                                        blurRadius: 10,
+                                        spreadRadius: 2,
+                                        offset: const Offset(5, 5),
+                                      ),
+                                    ],
+                                    borderRadius:  BorderRadius.circular(12),
+                                    color: primaryColor
+                                ),
+                                child: Center(
+                                  child: Text('السحوبات',
+                                    style: TextStyle(color: Colors.white,fontSize: 18 ),),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 12,),
                             Row(
                               children: [
                                 GestureDetector(

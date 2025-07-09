@@ -15,6 +15,7 @@ import '../model/CounterModel.dart';
 import '../model/GetUserModel.dart';
 import '../model/ProfileModel.dart';
 import '../model/SubscriptionMarketModel.dart';
+import '../model/WithdrawalRequestModel.dart';
 
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitialState());
@@ -23,6 +24,42 @@ class AppCubit extends Cubit<AppStates> {
 
   refreshState(){
     emit(SendSawaSuccessState());
+  }
+
+  bool typeOfCash=true;
+  void funTypeOfCash(){
+    typeOfCash = !typeOfCash;
+    emit(ValidationState());
+  }
+
+  void withdrawMoney({required BuildContext context, required String amount,required String accountNumber}) {
+    emit(AddWithdrawMoneyLoadingState());
+    String? method;
+    if(typeOfCash == true){
+      method="ماستر كارد";
+    }else{
+      method="زين كاش";
+    }
+    DioHelper.postData(
+        url: '/withdrawalRequest',
+        data: {
+          'userId': id,
+          'amount': amount,
+          'method': method,
+          'accountNumber': accountNumber,
+        }
+    ).then((value) {
+      emit(AddWithdrawMoneySuccessState());
+    }).catchError((error) {
+      if (error is DioError) {
+        final errorMessage = error.response?.data['message'] ;
+        showToastError(text: errorMessage, context: context);
+      } else {
+        showToastError(text: 'خطأ في الاتصال بالخادم', context: context);
+      }
+      emit(AddWithdrawMoneyErrorState());
+    });
+
   }
 
   void verifyToken({required BuildContext context}) {
@@ -357,6 +394,42 @@ class AppCubit extends Cubit<AppStates> {
           context: context,);
         print(error.toString());
         emit(GetCounterErrorState());
+      }else {
+        print("Unknown Error: $error");
+      }
+    });
+  }
+
+  WithdrawalRequestModel? withdrawalRequestModel;
+  void getWithdrawalRequest({required BuildContext context,}) {
+    emit(GetWithdrawalRequestLoadingState());
+    DioHelper.getData(
+      url: '/withdrawalRequest',
+      token: token,
+    ).then((value) {
+      withdrawalRequestModel = WithdrawalRequestModel.fromJson(value.data);
+      emit(GetWithdrawalRequestSuccessState());
+    }).catchError((error) {
+      if (error is DioError) {
+        showToastError(text: error.toString(), context: context,);
+        emit(GetWithdrawalRequestErrorState());
+      }else {
+        print("Unknown Error: $error");
+      }
+    });
+  }
+
+  void deleteWithdrawalRequest({required BuildContext context,required String id,}) {
+    emit(DeleteWithdrawalRequestLoadingState());
+    DioHelper.deleteData(
+      url: '/withdrawalRequest/$id',
+    ).then((value) {
+      getWithdrawalRequest(context: context);
+      emit(DeleteWithdrawalRequestSuccessState());
+    }).catchError((error) {
+      if (error is DioError) {
+        showToastError(text: error.toString(), context: context,);
+        emit(DeleteWithdrawalRequestErrorState());
       }else {
         print("Unknown Error: $error");
       }

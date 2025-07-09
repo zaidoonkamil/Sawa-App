@@ -39,7 +39,8 @@ class Detail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => AppCubit()..getCounter(context: context),
+      create: (BuildContext context) => AppCubit()
+        ..getCounter(context: context),
       child: BlocConsumer<AppCubit,AppStates>(
         listener: (context,state){
           if(state is AssignAgentsSuccessState){
