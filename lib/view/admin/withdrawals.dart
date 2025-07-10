@@ -93,7 +93,7 @@ class Withdrawals extends StatelessWidget {
                                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                           children: [
                                                             Text(
-                                                              '${cubit.withdrawalRequestModel!.requests[i].amount-100}',
+                                                              '${cubit.withdrawalRequestModel!.requests[i].amount}',
                                                               style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 14),),
                                                             Text(': المبلغ المراد سحبه',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 14),),
                                                           ],
