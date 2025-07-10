@@ -69,9 +69,9 @@ class WithdrawMoney extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Expanded(child: Text('علما ان عمولة السحب 100 كوينز من قيمة المبلغ الاجمال',
+                                Expanded(child: Text('علما ان عمولة السحب 100 كوينز من قيمة المبلغ الاجمال واقل قيمة للسحب 1100 كوينز',
                                   textAlign: TextAlign.end,
-                                  style: TextStyle(fontSize: 16,color: Colors.black54),)),
+                                  style: TextStyle(fontSize: 12,color: Colors.black54),)),
                                 SizedBox(width: 6,),
                                 Container(
                                     decoration: BoxDecoration(
