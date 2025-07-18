@@ -9,18 +9,18 @@ class AgentsModel {
   String name;
   String phone;
   String location;
-  String description;
+  int sawa;
+  String? note;
   DateTime createdAt;
-  DateTime updatedAt;
 
   AgentsModel({
     required this.id,
     required this.name,
-    required this.phone,
     required this.location,
-    required this.description,
+    required this.phone,
+    required this.sawa,
+    required this.note,
     required this.createdAt,
-    required this.updatedAt,
   });
 
   factory AgentsModel.fromJson(Map<String, dynamic> json) => AgentsModel(
@@ -28,18 +28,17 @@ class AgentsModel {
     name: json["name"],
     phone: json["phone"],
     location: json["location"],
-    description: json["description"],
+    sawa: json["sawa"],
+    note: json["note"],
     createdAt: DateTime.parse(json["createdAt"]),
-    updatedAt: DateTime.parse(json["updatedAt"]),
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
     "name": name,
     "phone": phone,
-    "location": location,
-    "description": description,
+    "sawa": sawa,
+    "note": note,
     "createdAt": createdAt.toIso8601String(),
-    "updatedAt": updatedAt.toIso8601String(),
   };
 }

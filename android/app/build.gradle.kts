@@ -29,11 +29,11 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.zaidoon.sawa"
+        applicationId = "com.napol.kuynz"
         minSdk = 23
         targetSdk = flutter.targetSdkVersion
-        versionCode = 2
-        versionName = "2.0"
+        versionCode = 1
+        versionName = "1.0"
     }
 
     signingConfigs {

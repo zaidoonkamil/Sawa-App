@@ -72,6 +72,10 @@ class GetCounterLoadingState extends AppStates {}
 class GetCounterSuccessState extends AppStates {}
 class GetCounterErrorState extends AppStates {}
 
+class VerifyOtpLoadingState extends AppStates {}
+class VerifyOtpSuccessState extends AppStates {}
+class VerifyOtpErrorState extends AppStates {}
+
 class GetWithdrawalRequestLoadingState extends AppStates {}
 class GetWithdrawalRequestSuccessState extends AppStates {}
 class GetWithdrawalRequestErrorState extends AppStates {}

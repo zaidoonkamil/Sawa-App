@@ -10,8 +10,10 @@ import '../../../core/styles/themes.dart';
 import '../../../core/widgets/custom_text_field.dart';
 import '../../core/navigation_bar/navigation_bar.dart';
 import '../../core/navigation_bar/navigation_bar_admin.dart';
+import '../../core/navigation_bar/navigation_bar_agents.dart';
 import '../../core/network/local/cache_helper.dart';
 import '../../core/widgets/constant.dart';
+import 'loginCode.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -43,8 +45,15 @@ class Login extends StatelessWidget {
                   token = AppCubit.get(context).tokenn.toString();
                   id = AppCubit.get(context).idd.toString();
                   adminOrUser = AppCubit.get(context).role.toString();
+                  // if(AppCubit.get(context).isVerified ==false){
+                  //   navigateTo(context, LoginCode(phone: AppCubit.get(context).phonee.toString(),));
+                  // }else{
+                  //
+                  // }
                   if (adminOrUser == 'admin') {
                     navigateAndFinish(context, BottomNavBarAdmin());
+                  }else if (adminOrUser == 'agent') {
+                    navigateAndFinish(context, BottomNavBarAgents());
                   } else {
                     navigateAndFinish(context, BottomNavBar());
                   }
@@ -92,8 +101,8 @@ class Login extends StatelessWidget {
                         CustomTextField(
                           controller: emailController,
                           hintText: 'البريد الالكتروني',
-                          prefixIcon: Icons.email_outlined,
-                          keyboardType: TextInputType.text,
+                          prefixIcon: Icons.phone,
+                          keyboardType: TextInputType.emailAddress,
                           validate: (String? value) {
                             if (value!.isEmpty) {
                               return 'رجائا اخل البريد الالكتروني';
@@ -149,7 +158,7 @@ class Login extends StatelessWidget {
                                       codeController.text='0';
                                     }
                                     cubit.signIn(
-                                      email: emailController.text.trim(),
+                                        email : emailController.text.trim(),
                                       password: passwordController.text.trim(),
                                       code: codeController.text.trim(),
                                       context: context

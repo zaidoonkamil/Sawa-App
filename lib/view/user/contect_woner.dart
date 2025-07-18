@@ -47,6 +47,7 @@ class ContectWoner extends StatelessWidget {
                                     itemBuilder: (c,i){
                                       return Column(
                                         children: [
+
                                           Container(
                                             padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 16),
                                             margin: const EdgeInsets.symmetric(horizontal: 20,),
@@ -121,7 +122,7 @@ class ContectWoner extends StatelessWidget {
                                                       mainAxisAlignment: MainAxisAlignment.center,
                                                       children: [
                                                         Expanded(
-                                                          child: Text(cubit.agentsModel![i].description,
+                                                          child: Text(cubit.agentsModel![i].note.toString(),
                                                             textAlign: TextAlign.center,
                                                             style: TextStyle(fontSize: 18,color: Colors.black),),
                                                         ),

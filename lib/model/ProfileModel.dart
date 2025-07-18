@@ -10,7 +10,9 @@ class ProfileModel {
   String email;
   String phone;
   String location;
+  bool isVerified;
   String role;
+  String note;
   int jewel;
   int totalPoints;
   int totalGems;
@@ -24,6 +26,7 @@ class ProfileModel {
     required this.id,
     required this.name,
     required this.email,
+    required this.isVerified,
     required this.phone,
     required this.location,
     required this.role,
@@ -32,6 +35,7 @@ class ProfileModel {
     required this.totalPoints,
     required this.totalGems,
     required this.dolar,
+    required this.note,
     required this.createdAt,
     required this.updatedAt,
     required this.userCounters,
@@ -45,7 +49,9 @@ class ProfileModel {
     location: json["location"],
     role: json["role"],
     jewel: json["Jewel"],
+    isVerified: json["isVerified"],
     sawa: json["sawa"],
+    note: json["note"]??'',
     totalPoints: json["totalPoints"],
     totalGems: json["totalGems"],
     dolar: double.parse(json["dolar"].toString()),

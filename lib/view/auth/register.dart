@@ -172,7 +172,7 @@ class Register extends StatelessWidget {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Expanded(child: Text('التأكيد على حفض كلمة السر جيدا لانك بنسيانها لا نتحمل مسئوليت ذلك',
+                                  Expanded(child: Text('التأكيد على حفض كلمة السر جيدا لانك بنسيانها لا نتحمل مسؤلية ذلك',
                                     textAlign: TextAlign.end,
                                     style: TextStyle(fontSize: 14,color: Colors.black54),)),
                                   SizedBox(width: 6,),

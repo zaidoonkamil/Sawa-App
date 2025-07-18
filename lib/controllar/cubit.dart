@@ -266,18 +266,20 @@ class AppCubit extends Cubit<AppStates> {
   String? tokenn;
   String? role;
   String? idd;
+  String? phonee;
+  bool? isVerified;
 
-  signIn({required String email, required String password, required String code, required BuildContext context,}){
+  signIn({required String email , required String password, required String code, required BuildContext context,}){
     emit(LoginLoadingState());
     Map<String , dynamic> data;
     if(code == '0'){
       data={
-        'email': email,
+        'email': email ,
         'password': password,
       };
     }else{
       data={
-        'email': email,
+        'email': email ,
         'password': password,
         'refId': code,
       };
@@ -289,6 +291,8 @@ class AppCubit extends Cubit<AppStates> {
       tokenn=value.data['token'];
       role=value.data['user']['role'];
       idd=value.data['user']['id'].toString();
+      isVerified=value.data['user']['isVerified'];
+      phonee=value.data['user']['phone'].toString();
       registerDevice(idd!);
       emit(LoginSuccessState());
     }).catchError((error)
@@ -305,6 +309,52 @@ class AppCubit extends Cubit<AppStates> {
     });
   }
 
+  sendOtp({required String phone ,required BuildContext context,}){
+    emit(LoginLoadingState());
+    DioHelper.postData(
+      url: '/send-otp',
+      data: {
+        'phone': phone ,
+      },
+    ).then((value) {
+      emit(LoginSuccessState());
+    }).catchError((error)
+    {
+      if (error is DioError) {
+        showToastError(
+          text: error.response?.data["error"] ?? "حدث خطأ غير معروف",
+          context: context,
+        );
+        emit(LoginErrorState());
+      }else {
+        print("Unknown Error: $error");
+      }
+    });
+  }
+
+  verifyOtp({required String phone ,required String code ,required BuildContext context,}){
+    emit(VerifyOtpLoadingState());
+    DioHelper.postData(
+      url: '/verify-otp',
+      data: {
+        'phone': phone ,
+        'code': code ,
+      },
+    ).then((value) {
+      emit(VerifyOtpSuccessState());
+    }).catchError((error)
+    {
+      if (error is DioError) {
+        showToastError(
+          text: error.response?.data["error"] ?? "حدث خطأ غير معروف",
+          context: context,
+        );
+        emit(VerifyOtpErrorState());
+      }else {
+        print("Unknown Error: $error");
+      }
+    });
+  }
 
   ProfileModel? profileModel;
   void getProfile({required BuildContext context,}) {
@@ -314,6 +364,16 @@ class AppCubit extends Cubit<AppStates> {
         token: token,
     ).then((value) {
       profileModel = ProfileModel.fromJson(value.data);
+      // if (profileModel != null) {
+      //   if (profileModel!.isVerified == false) {
+      //     showToastError(
+      //       text: "حسابك غير مفعل، الرجاء تفعيل الحساب.",
+      //       context: context,
+      //     );
+      //     signOut(context);
+      //   }
+      // }
+
       emit(GetProfileSuccessState());
     }).catchError((error) {
       if (error is DioError) {
@@ -362,6 +422,33 @@ class AppCubit extends Cubit<AppStates> {
         'amount': amount,
       },
     ).then((value) {
+      emit(SendMonySuccessState());
+    }).catchError((error)
+    {
+      if (error is DioError) {
+        showToastError(
+          text: error.response?.data["error"] ,
+          context: context,
+        );
+        emit(SendMonyErrorState());
+      }else {
+        print("Unknown Error: $error");
+      }
+    });
+  }
+
+  sendMonyAgents({required String receiverId, required String amount, required BuildContext context,}){
+    emit(SendMonyLoadingState());
+    DioHelper.postData(
+      url: '/sendmony-simple',
+      data: {
+        'senderId': id,
+        'receiverId': receiverId,
+        'amount': amount,
+      },
+    ).then((value) {
+      profileModel = null;
+      getProfile(context: context);
       emit(SendMonySuccessState());
     }).catchError((error)
     {
@@ -494,7 +581,7 @@ class AppCubit extends Cubit<AppStates> {
   void getAgents({required BuildContext context,}) {
     emit(GetAgentsLoadingState());
     DioHelper.getData(
-      url: '/agents',
+      url: '/roleAgents',
     ).then((value) {
       agentsModel = (value.data as List)
           .map((item) => AgentsModel.fromJson(item))
@@ -665,18 +752,23 @@ class AppCubit extends Cubit<AppStates> {
 
   assignAgents({
     required String name,
+    required String email,
     required String phone,
     required String location,
-    required String desc,
+    required String password,
+    required String note,
     required BuildContext context,}) async {
     emit(AssignAgentsLoadingState());
     DioHelper.postData(
-      url: '/agents',
+      url: '/users',
       data:  {
         'name': name,
+        'email': email,
         'phone': phone,
         'location': location,
-        'description': desc,
+        'password': password,
+        'note': note,
+        'role': 'agent',
       },
     ).then((value) {
       emit(AssignAgentsSuccessState());
@@ -701,7 +793,7 @@ class AppCubit extends Cubit<AppStates> {
     required BuildContext context,}) async {
     emit(DeleteAgentsLoadingState());
     DioHelper.deleteData(
-      url: '/agents/$id',
+      url: '/users/$id',
     ).then((value) {
       emit(DeleteAgentsSuccessState());
     }).catchError((error) {

@@ -22,9 +22,11 @@ class Detail extends StatelessWidget {
 
   static GlobalKey<FormState> formKey = GlobalKey<FormState>();
   static TextEditingController userNameController = TextEditingController();
+  static TextEditingController emailController = TextEditingController();
   static TextEditingController phoneController = TextEditingController();
   static TextEditingController locationController = TextEditingController();
   static TextEditingController descriptionController = TextEditingController();
+  static TextEditingController passwordController = TextEditingController();
   static GlobalKey<FormState> formKey2 = GlobalKey<FormState>();
   static TextEditingController priceController = TextEditingController();
   static TextEditingController pointsController = TextEditingController();
@@ -45,9 +47,11 @@ class Detail extends StatelessWidget {
         listener: (context,state){
           if(state is AssignAgentsSuccessState){
             userNameController.text='';
+            emailController.text='';
             phoneController.text='';
             locationController.text='';
             descriptionController.text='';
+            passwordController.text='';
             showToastSuccess(
               text: "تمت عملية الاضافة بنجاح",
               context: context,
@@ -148,6 +152,18 @@ class Detail extends StatelessWidget {
                                         ),
                                         const SizedBox(height: 16),
                                         CustomTextField(
+                                          controller: emailController,
+                                          hintText: 'الايميل',
+                                          prefixIcon: Icons.email_outlined,
+                                          keyboardType: TextInputType.text,
+                                          validate: (String? value) {
+                                            if (value!.isEmpty) {
+                                              return 'رجائا اخل الايميل';
+                                            }
+                                          },
+                                        ),
+                                        const SizedBox(height: 16),
+                                        CustomTextField(
                                           controller: phoneController,
                                           hintText: 'رقم الهاتف',
                                           prefixIcon: Icons.phone_outlined,
@@ -183,7 +199,19 @@ class Detail extends StatelessWidget {
                                             }
                                           },
                                         ),
-                                        const SizedBox(height: 60),
+                                        const SizedBox(height: 16),
+                                        CustomTextField(
+                                          controller: passwordController,
+                                          hintText: 'كلمة السر',
+                                          prefixIcon: Icons.password,
+                                          obscureText: false,
+                                          validate: (String? value) {
+                                            if (value!.isEmpty) {
+                                              return 'رجائا اكتب كلمة السر';
+                                            }
+                                          },
+                                        ),
+                                        const SizedBox(height: 30),
                                         ConditionalBuilder(
                                           condition: state is !AssignAgentsLoadingState,
                                           builder: (context){
@@ -192,10 +220,13 @@ class Detail extends StatelessWidget {
                                                 if (formKey.currentState!.validate()) {
                                                   cubit.assignAgents(
                                                       name: userNameController.text.trim(),
+                                                      email: emailController.text.trim(),
                                                       phone: phoneController.text.trim(),
                                                       location: locationController.text.trim(),
-                                                      desc: descriptionController.text.trim(),
-                                                      context: context);
+                                                      note: descriptionController.text.trim(),
+                                                      context: context,
+                                                    password:  passwordController.text.trim(),
+                                                     );
                                                 }
                                               },
                                               child: Container(

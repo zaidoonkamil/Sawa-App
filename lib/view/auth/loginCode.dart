@@ -2,30 +2,35 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:dananer/controllar/cubit.dart';
 import 'package:dananer/controllar/states.dart';
 import 'package:dananer/view/auth/login.dart';
-import 'package:dananer/view/auth/register.dart';
-import 'package:dananer/view/user/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/ navigation/navigation.dart';
 import '../../../core/styles/themes.dart';
 import '../../../core/widgets/custom_text_field.dart';
-import '../../core/navigation_bar/navigation_bar.dart';
+import '../../core/widgets/constant.dart';
+import '../../core/widgets/show_toast.dart';
 
 class LoginCode extends StatelessWidget {
-  const LoginCode({super.key});
+  const LoginCode({super.key, required this.phone});
 
+  final String phone;
   static GlobalKey<FormState> formKey = GlobalKey<FormState>();
   static TextEditingController codeController = TextEditingController();
-  static TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => AppCubit(),
+      create: (BuildContext context) => AppCubit()..sendOtp(phone: phone, context: context),
       child: BlocConsumer<AppCubit,AppStates>(
         listener: (context,state){
-
+          if(state is VerifyOtpSuccessState){
+            showToastSuccess(
+              text: "تم تفعيل الحساب بنجاح",
+              context: context,
+            );
+            navigateAndFinish(context, Login());
+          }
         },
         builder: (context,state){
           var cubit=AppCubit.get(context);
@@ -40,7 +45,7 @@ class LoginCode extends StatelessWidget {
                     key: formKey,
                     child: Column(
                       children: [
-                        SizedBox(height: 70,),
+                        SizedBox(height: 20,),
                         Row(
                           children: [
                             GestureDetector(
@@ -51,14 +56,14 @@ class LoginCode extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 70,),
+                        SizedBox(height: 30,),
                         Image.asset(
                           'assets/images/logo.png',
                           height: 100,
                         ),
                         const SizedBox(height: 12),
-                        const Text(
-                          'تطبيق سوا',
+                        Text(
+                          nameApp,
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -76,27 +81,27 @@ class LoginCode extends StatelessWidget {
                         const SizedBox(height: 70),
                         CustomTextField(
                           controller: codeController,
-                          hintText: 'كود الاحالة',
+                          hintText: 'ادخل كود التفعيل',
                           prefixIcon: Icons.code,
-                          keyboardType: TextInputType.text,
+                          keyboardType: TextInputType.phone,
                           validate: (String? value) {
                             if (value!.isEmpty) {
-                              return 'رجائا اخل كود الاحالة';
+                              return 'رجائا اخل كود التفعيل';
                             }
                           },
                         ),
                         const SizedBox(height: 60),
                         ConditionalBuilder(
-                          condition: state is !LoginLoadingState,
+                          condition: state is !VerifyOtpLoadingState,
                           builder: (context){
                             return GestureDetector(
                               onTap: (){
                                 if (formKey.currentState!.validate()) {
-                                  /*   cubit.signIn(
-                                      phone: userNameController.text.trim(),
-                                      password: passwordController.text.trim(),
+                                     cubit.verifyOtp(
+                                      phone: phone,
+                                      code: codeController.text.trim(),
                                       context: context
-                                    );*/
+                                    );
                                 }
                               },
                               child: Container(
@@ -115,7 +120,7 @@ class LoginCode extends StatelessWidget {
                                     color: primaryColor
                                 ),
                                 child: Center(
-                                  child: Text('تسجيل الدخول',
+                                  child: Text('التحقق',
                                     style: TextStyle(color: Colors.white,fontSize: 18 ),),
                                 ),
                               ),
@@ -124,24 +129,6 @@ class LoginCode extends StatelessWidget {
                           fallback: (c)=> CircularProgressIndicator(color: primaryColor,),
                         ),
                         const SizedBox(height: 40),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                navigateTo(context, Login());
-                              },
-                              child: const Text(
-                                'تسجيل الدخول عن طريق الايميل ',
-                                style: TextStyle(
-                                  color: primaryColor,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            const Text("لدي حساب ؟ "),
-                          ],
-                        )
                       ],
                     ),
                   ),
